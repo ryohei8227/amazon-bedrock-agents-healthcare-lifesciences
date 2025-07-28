@@ -27,7 +27,7 @@ Resources:
   MedicalReasoningEndpoint:
     Type: "AWS::CloudFormation::Stack"
     Properties:
-      TemplateURL: "sagemaker-marketplace-endpoint.yaml"
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/sagemaker-marketplace-endpoint.yaml
       Parameters:
         EndPointName: "Endpoint-Medical-Reasoning-LLM-14B-1"
         ProductARN: !Ref MedicalReasoningModelProductArn

@@ -323,7 +323,7 @@ Resources:
   SEC10kAgent:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/sec-10-K-agent-cfn.yaml
+      TemplateURL: sec-10-K-agent-cfn.yaml
       Parameters:
         AgentIAMRoleArn: !GetAtt AgentRole.Arn
         S3CodeBucket: !Ref S3Bucket
@@ -388,7 +388,7 @@ Resources:
   InvivoStudySchedulerAgent:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/invivo-study-scheduler-agent-cfn.yaml
+      TemplateURL: invivo-study-scheduler-agent-cfn.yaml
       Parameters:
         AgentIAMRoleArn: !GetAtt AgentRole.Arn
         S3CodeBucket: !Ref S3Bucket
