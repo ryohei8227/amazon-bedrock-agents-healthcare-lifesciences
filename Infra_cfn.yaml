@@ -89,7 +89,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Condition: CreateNetworking
     Properties:
-      TemplateURL: build/network.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/network.yaml
       TimeoutInMinutes: 10
       Tags:
         - Key: Project
@@ -118,7 +118,7 @@ Resources:
   CodeRepo:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: build/copy_github_repo.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/copy_github_repo.yaml
       Parameters:
         GitHubUrl: !Ref GithubLink
         BranchName: !Ref GitBranch
@@ -136,7 +136,7 @@ Resources:
   CodeBuild:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: build/codebuild.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/codebuild.yaml
       Parameters:
         GithubLink: !Ref GithubLink
         GitBranch: !Ref GitBranch
@@ -235,7 +235,7 @@ Resources:
     DependsOn:
       - CodeBuild
     Properties:
-      TemplateURL: multi_agent_collaboration/cancer_biomarker_discovery/agent_build.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/agent_build.yaml
       Parameters:
         BedrockModelId: !Ref BedrockModelId
         RedshiftDatabaseName: !Ref RedshiftDatabaseName
@@ -273,7 +273,7 @@ Resources:
   ClinicalStudySearchAgent:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: agents_catalog/15-clinical-study-research-agent/clinical-study-agent.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/clinical-study-agent.yaml
       Parameters:
         AgentIAMRoleArn: !GetAtt AgentRole.Arn
         ChartImageBucketName: !Ref S3Bucket
@@ -285,7 +285,7 @@ Resources:
   ClinicalTrialProtocolGeneratorAgent:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: agents_catalog/16-Clinical-trial-protocol-generator-agent/clinical-trial-protocol-generator-agent.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/clinical-trial-protocol-generator-agent.yaml
       Parameters:
         AgentIAMRoleArn: !GetAtt AgentRole.Arn
       TimeoutInMinutes: 10
@@ -296,7 +296,7 @@ Resources:
   ClinicalTrialProtocolSupervisorAgent:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: multi_agent_collaboration/Clinical-Trial-Protocol-Assistant/clinical-trial-protocol-assistant-cfn.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/clinical-trial-protocol-assistant-cfn.yaml
       Parameters:
         BedrockModelId: !Ref BedrockModelId
         AgentIAMRoleArn: !GetAtt AgentRole.Arn
@@ -311,7 +311,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Condition: CreateWebSearchAgent
     Properties:
-      TemplateURL: agents_catalog/11-Tavily-web-search-agent/web-search-agent-cfn.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/web-search-agent-cfn.yaml
       Parameters:
         AgentIAMRoleArn: !GetAtt AgentRole.Arn
         TavilyApiKey: !Ref TavilyApiKey
@@ -323,7 +323,7 @@ Resources:
   SEC10kAgent:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: agents_catalog/10-SEC-10-K-agent/sec-10-K-agent-cfn.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/sec-10-K-agent-cfn.yaml
       Parameters:
         AgentIAMRoleArn: !GetAtt AgentRole.Arn
         S3CodeBucket: !Ref S3Bucket
@@ -337,7 +337,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Condition: CreateUSPTOSearchAgent
     Properties:
-      TemplateURL: agents_catalog/14-USPTO-search/uspto-search-agent-cfn.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/uspto-search-agent-cfn.yaml
       Parameters:
         AgentIAMRoleArn: !GetAtt AgentRole.Arn
         USPTOApiKey: !Ref USPTOApiKey
@@ -350,7 +350,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Condition: CreateCompetitiveIntelAgent
     Properties:
-      TemplateURL: multi_agent_collaboration/competitive_intelligence/competitive-intelligence-agent-cfn.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/competitive-intelligence-agent-cfn.yaml
       Parameters:
         BedrockModelId: !Ref BedrockModelId
         AgentIAMRoleArn: !GetAtt AgentRole.Arn
@@ -365,7 +365,7 @@ Resources:
   WileyOnlineSearchAgent:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: agents_catalog/18-Wiley-OA-life-sciences-agent/wiley-search-agent-cfn.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/wiley-search-agent-cfn.yaml
       Parameters:
         AgentIAMRoleArn: !GetAtt AgentRole.Arn
       TimeoutInMinutes: 10
@@ -376,7 +376,7 @@ Resources:
   UniProtProteinSearchAgent:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: agents_catalog/19-UniProt-protein-search-agent/uniprot-protein-search-agent-cfn.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/uniprot-protein-search-agent-cfn.yaml
       Parameters:
         BedrockModelId: !Ref BedrockModelId
         AgentIAMRoleArn: !GetAtt AgentRole.Arn
@@ -388,7 +388,7 @@ Resources:
   InvivoStudySchedulerAgent:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: agents_catalog/21-invivo-study-scheduler-agent/invivo-study-scheduler-agent-cfn.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/invivo-study-scheduler-agent-cfn.yaml
       Parameters:
         AgentIAMRoleArn: !GetAtt AgentRole.Arn
         S3CodeBucket: !Ref S3Bucket
@@ -401,7 +401,7 @@ Resources:
   SafetySignalDetectionAgent:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: agents_catalog/22-Safety-Signal-Detection-Agent/safety-signal-detection-agent-cfn.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/safety-signal-detection-agent-cfn.yaml
       Parameters:
         BedrockModelId: !Ref BedrockModelId
         AgentIAMRoleArn: !GetAtt AgentRole.Arn

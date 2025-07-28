@@ -106,7 +106,7 @@ Use the `Image` Lambda package type for complex action groups (e.g., semantic se
 SEC10KSearchContainer:
 Type: "AWS::CloudFormation::Stack"
 Properties:
-    TemplateURL: ../../build/container.yaml
+    TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/container.yaml
     Parameters:
     S3CodeBucket:
         "Fn::If":

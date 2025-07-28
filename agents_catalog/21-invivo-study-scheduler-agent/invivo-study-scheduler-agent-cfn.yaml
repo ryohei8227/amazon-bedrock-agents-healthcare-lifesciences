@@ -65,7 +65,7 @@ Resources:
   ScheduleOptimizerContainer:
     Type: "AWS::CloudFormation::Stack"
     Properties:
-      TemplateURL: ../../build/container.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/container.yaml
       # TemplateURL: https://invivo-study-scheduler-agent-build.s3.amazonaws.com/build/container.yaml
       Parameters:
         S3CodeBucket:
