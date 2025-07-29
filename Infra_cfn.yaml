@@ -154,7 +154,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Condition: CreateReactApp
     Properties:
-      TemplateURL: ui/cloudformation/ecs.yml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/ecs.yml
       Parameters:
         AllowedCidr: !Ref ReactAppAllowedCidr
         VPCId:
@@ -323,7 +323,7 @@ Resources:
   SEC10kAgent:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: sec-10-K-agent-cfn.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/sec-10-K-agent-cfn.yaml
       Parameters:
         AgentIAMRoleArn: !GetAtt AgentRole.Arn
         S3CodeBucket: !Ref S3Bucket
@@ -388,7 +388,7 @@ Resources:
   InvivoStudySchedulerAgent:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: invivo-study-scheduler-agent-cfn.yaml
+      TemplateURL: https://bedrock-hcls-templates-ryohei.s3.ap-northeast-1.amazonaws.com/templates/invivo-study-scheduler-agent-cfn.yaml
       Parameters:
         AgentIAMRoleArn: !GetAtt AgentRole.Arn
         S3CodeBucket: !Ref S3Bucket
